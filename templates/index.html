@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kupo Bingo</title>
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
+<style>
+
+
+
+#container { 
+position: fixed;
+left: 50%;
+transform: translate(-50%); 
+}
+
+
+
+
+
+.bingobookborder { 
+  border: 36px solid;
+  border-image: url(static/border.png) 16 round;
+  background-color: #efe7ce;
+}
+
+
+.grid-container {
+  display: inline-grid;
+  grid-column-gap: 0.5em;
+  grid-row-gap: 0.5em;
+  grid-template-columns: auto auto auto auto auto;
+  
+}
+.grid-item {
+  text-align: center;
+  height: 100px;
+  width: 100px;
+  text-overflow: ellipsis;
+ overflow: hidden;
+ font-size: 1em;
+ vertical-align: middle;
+ background-size: cover;
+ background-repeat: no-repeat;
+ 
+
+
+}
+
+.stamp {
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+
+}
+
+
+#bingo1 {
+background-image: url(static/text1.png), url(static/blob1.png);
+}
+#bingo2 {
+background-image: url(static/text2.png), url(static/blob2.png);
+}
+#bingo3 {
+background-image: url(static/text3.png), url(static/blob3.png);
+}
+#bingo4 {
+background-image: url(static/text4.png), url(static/blob4.png);
+}
+#bingo5 {
+background-image: url(static/text5.png), url(static/blob5.png);
+}
+#bingo6 {
+background-image: url(static/text6.png), url(static/blob6.png);
+}
+#bingo7 {
+background-image: url(static/text7.png), url(static/blob7.png);
+}
+#bingo8 {
+background-image: url(static/text8.png), url(static/blob8.png);
+}
+#bingo9 {
+background-image: url(static/text9.png), url(static/blob9.png);
+}
+#bingo10 {
+background-image: url(static/text10.png), url(static/blob10.png);
+}
+#bingo11 {
+background-image: url(static/text11.png), url(static/blob3.png);
+}
+#bingo12 {
+background-image: url(static/text12.png), url(static/blob2.png);
+}
+#bingo13 {
+background-image: url(static/text13.png), url(static/blob1.png);
+}
+#bingo14 {
+background-image: url(static/text14.png), url(static/blob6.png);
+}
+#bingo15 {
+background-image: url(static/text15.png), url(static/blob5.png);
+}
+#bingo16 {
+background-image: url(static/text16.png), url(static/blob2.png);
+}
+#bingo17 {
+background-image: url(static/text17.png), url(static/blob5.png);
+}
+#bingo18 {
+background-image: url(static/text18.png), url(static/blob6.png);
+}
+#bingo19 {
+background-image: url(static/text19.png), url(static/blob3.png);
+}
+#bingo20 {
+background-image: url(static/text20.png), url(static/blob10.png);
+}
+#bingo21 {
+background-image: url(static/text21.png), url(static/blob1.png);
+}
+#bingo22 {
+background-image: url(static/text22.png), url(static/blob2.png);
+}
+#bingo23 {
+background-image: url(static/text23.png), url(static/blob3.png);
+}
+#bingo24 {
+background-image: url(static/text24.png), url(static/blob4.png);
+}
+#bingo25 {
+background-image: url(static/text25.png), url(static/blob5.png);
+}
+
+#header{
+text-align: center;
+    font-size: 2.5em;
+    text-shadow: 2px 2px grey;
+
+}
+
+
+</style>
+  </head>
+  <body>
+
+<div id="container">
+  <div id="header">
+  Pass the Nut, Kupo<img src="static/stamp5.png" />
+  </div>
+  <div class="bingobookborder grid-container">
+<div id="bingo1" class="grid-item"></div>
+<div id="bingo2" class="grid-item"></div>
+<div id="bingo3" class="grid-item"></div>
+<div id="bingo4" class="grid-item"></div>
+<div id="bingo5" class="grid-item"></div>
+<div id="bingo6" class="grid-item"></div>
+<div id="bingo7" class="grid-item"></div>
+<div id="bingo8" class="grid-item"></div>
+<div id="bingo9" class="grid-item"></div>
+<div id="bingo10" class="grid-item"></div>
+<div id="bingo11" class="grid-item"></div>
+<div id="bingo12" class="grid-item"></div>
+<div id="bingo13" class="grid-item"></div>
+<div id="bingo14" class="grid-item"></div>
+<div id="bingo15" class="grid-item"></div>
+<div id="bingo16" class="grid-item"></div>
+<div id="bingo17" class="grid-item"></div>
+<div id="bingo18" class="grid-item"></div>
+<div id="bingo19" class="grid-item"></div>
+<div id="bingo20" class="grid-item"></div>
+<div id="bingo21" class="grid-item"></div>
+<div id="bingo22" class="grid-item"></div>
+<div id="bingo23" class="grid-item"></div>
+<div id="bingo24" class="grid-item"></div>
+<div id="bingo25" class="grid-item"></div>
+
+  </div>
+  </div>
+  <script>
+  
+$(".grid-item").click(function(e){
+  var columnClicked = $(this).attr('id')
+  
+  
+      e.preventDefault(); 
+
+
+    $.ajax({
+           type: "GET",
+           url: "/stamp",
+           data: "column=" + columnClicked,
+           success: function(data)
+           {
+           }
+         });
+  
+});
+  
+$("#rollin").submit(function(e) {
+
+    e.preventDefault(); // avoid to execute the actual submit of the form.
+        var form = $(this);
+    if ($('#user').val() === 'GM'){
+        var url = 'rolldie-gm';
+    } else {
+        var url = form.attr('action');
+    }
+
+
+    $.ajax({
+           type: "GET",
+           url: url,
+           data: form.serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+           }
+         });
+
+
+});
+function fetchData() {
+
+$.getJSON( "/stamps", function( data ) {
+  $.each( data, function( key, val ) {
+    columnObj = $('#' + key);
+    if (val !== null && columnObj.is(':empty')){
+        columnObj.html('<img class="stamp" src="static/' + val + '" />');
+    } else if (val === null && !columnObj.is(':empty')) {
+        columnObj.html('');
+    }
+
+  });
+
+});
+ 
+ };
+  $(function() {
+      setInterval(function() {fetchData()}, 750);
+  });
+  </script>
+  </body>
+</html>
