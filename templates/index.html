@@ -101,7 +101,6 @@
   });
 
   function fetchData() {
-
   $.getJSON( "/stamps", function( data ) {
     $.each( data, function( key, val ) {
       columnObj = $('#' + key);
