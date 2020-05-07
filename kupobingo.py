@@ -1,8 +1,5 @@
 from flask import Flask, jsonify, render_template, request
 from random import randint
-from collections import OrderedDict
-
-
 
 app = Flask(__name__)
 
@@ -16,7 +13,6 @@ bingoboard = {
 
 @app.route("/", methods=['GET'])
 def home():
-    search = request.args.get("user")
     return render_template('index.html')
     
 @app.route("/stamp", methods=['GET'])
