@@ -29,7 +29,7 @@ def stamp():
     return "Something went wrong"
     
 @app.route("/stamps", methods=['GET'])
-def rolls():
+def stamps():
     return jsonify(bingoboard)
     
 application = app    
