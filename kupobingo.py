@@ -3,6 +3,7 @@ from random import randint
 import hashlib
 import base64
 import html
+import time
 
 
 app = Flask(__name__)
@@ -17,7 +18,7 @@ bingoboard = {
 
 @app.route("/", methods=['GET'])
 def home():
-    return render_template('index.html')
+    return render_template('index.html', randvar=int(time.time()))
     
 @app.route("/edit", methods=['GET'])
 def editpage():
