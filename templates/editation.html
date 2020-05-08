@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kupo Bingo Paint</title>
+   <!-- stylesheet -->
+    <link href="static/css/literallycanvas.css" rel="stylesheet">
+
+    <!-- dependency: React.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-with-addons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
+    <!-- Literally Canvas -->
+    <script src="static/js/literallycanvas.js"></script>
+  </head>
+  <body>
+    <!-- where the widget goes. you can do CSS to it. -->
+    <!-- note: as of 0.4.13, you cannot use 'literally' as the class name.
+         sorry about that. -->
+    <div class="my-drawing"></div>
+<button id="OpenImage">Open Image</button><button id="SaveImage">Save Image</button><input type="password" id="password" name="password" placeholder="pw for save"><input type="number" id="column" placeholder="#" name="column" min="1" max="25">
+<span id="message"></span>
+    <!-- kick it off -->
+    <script>
+    /**
+ * Display a base64 URL inside an iframe in another window.
+ */
+function debugBase64(base64URL){
+    var win = window.open();
+    win.document.write('<iframe src="' + base64URL  + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>');
+};
+      $(document).ready(function() {
+    var imageSize = {width: 100, height: 100};
+    var imageBounds = {
+      x: 0, y: 0, width: imageSize.width, height: imageSize.height
+    };
+    var lc = LC.init(
+      document.getElementsByClassName('my-drawing')[0],
+      {imageSize: imageSize, imageURLPrefix: 'static/img'}
+    );
+    
+    $('#OpenImage')
+      .click(function(e) {
+        e.preventDefault();
+        var svgString = lc.getSVGString({rect: imageBounds});
+        debugBase64("data:image/svg+xml;base64," + btoa(svgString));
+      });
+    
+    $('#SaveImage')
+      .click(function(e) {
+        e.preventDefault();
+        if ($('#password').val().length > 1 && $('#column').val().length > 0){
+            $('#message').html("Saving");
+            $.ajax({
+             type: "POST",
+             url: "/saveimage",
+             data: {
+                base64:  lc.getImage({rect: imageBounds}).toDataURL(),
+                password: $('#password').val(),
+                column: $('#column').val()
+                },
+             success: function(data)
+             {
+                $('#message').html(data)
+             }
+           });
+        } else {
+            $('#message').html("User Input error")
+        }
+        //debugBase64(lc.getImage({rect: imageBounds}).toDataURL());
+      });
+  });
+    </script>
+  </body>
+</html>
