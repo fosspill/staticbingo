@@ -44,8 +44,7 @@ function debugBase64(base64URL){
     $('#OpenImage')
       .click(function(e) {
         e.preventDefault();
-        var svgString = lc.getSVGString({rect: imageBounds});
-        debugBase64("data:image/svg+xml;base64," + btoa(svgString));
+        debugBase64(lc.getImage({rect: imageBounds}).toDataURL());
       });
     
     $('#SaveImage')
