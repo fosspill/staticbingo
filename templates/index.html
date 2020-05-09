@@ -10,6 +10,15 @@
 #header{
     font-size: 2.5em;
     text-shadow: 2px 2px grey;
+
+}
+
+#header img{
+    width: 105%;
+}
+
+#container{
+max-width: 604px;
 }
   
 .bingobookborder { 
@@ -19,6 +28,7 @@
 }
 
 .grid-container {
+
   display: inline-grid;
   grid-column-gap: 0.5em;
   grid-row-gap: 0.5em;
@@ -44,38 +54,65 @@
   width: 100%;
 }
 
-#bingo1 {background-image: url(static/text1.png?ts={{ randvar }}), url(static/blob1.png);}
-#bingo2 {background-image: url(static/text2.png?ts={{ randvar }}), url(static/blob2.png);}
-#bingo3 {background-image: url(static/text3.png?ts={{ randvar }}), url(static/blob3.png);}
-#bingo4 {background-image: url(static/text4.png?ts={{ randvar }}), url(static/blob4.png);}
-#bingo5 {background-image: url(static/text5.png?ts={{ randvar }}), url(static/blob5.png);}
-#bingo6 {background-image: url(static/text6.png?ts={{ randvar }}), url(static/blob6.png);}
-#bingo7 {background-image: url(static/text7.png?ts={{ randvar }}), url(static/blob7.png);}
-#bingo8 {background-image: url(static/text8.png?ts={{ randvar }}), url(static/blob8.png);}
-#bingo9 {background-image: url(static/text9.png?ts={{ randvar }}), url(static/blob9.png);}
-#bingo10 {background-image: url(static/text10.png?ts={{ randvar }}), url(static/blob10.png);}
-#bingo11 {background-image: url(static/text11.png?ts={{ randvar }}), url(static/blob3.png);}
-#bingo12 {background-image: url(static/text12.png?ts={{ randvar }}), url(static/blob2.png);}
-#bingo13 {background-image: url(static/text13.png?ts={{ randvar }}), url(static/blob1.png);}
-#bingo14 {background-image: url(static/text14.png?ts={{ randvar }}), url(static/blob6.png);}
-#bingo15 {background-image: url(static/text15.png?ts={{ randvar }}), url(static/blob5.png);}
-#bingo16 {background-image: url(static/text16.png?ts={{ randvar }}), url(static/blob2.png);}
-#bingo17 {background-image: url(static/text17.png?ts={{ randvar }}), url(static/blob5.png);}
-#bingo18 {background-image: url(static/text18.png?ts={{ randvar }}), url(static/blob6.png);}
-#bingo19 {background-image: url(static/text19.png?ts={{ randvar }}), url(static/blob3.png);}
-#bingo20 {background-image: url(static/text20.png?ts={{ randvar }}), url(static/blob10.png);}
-#bingo21 {background-image: url(static/text21.png?ts={{ randvar }}), url(static/blob1.png);}
-#bingo22 {background-image: url(static/text22.png?ts={{ randvar }}), url(static/blob2.png);}
-#bingo23 {background-image: url(static/text23.png?ts={{ randvar }}), url(static/blob3.png);}
-#bingo24 {background-image: url(static/text24.png?ts={{ randvar }}), url(static/blob4.png);}
-#bingo25 {background-image: url(static/text25.png?ts={{ randvar }}), url(static/blob5.png);}
+.stamp:hover {
+  opacity: 0.4;
+}
+
+#editbutton img{
+width: 24px;
+height: 24px;
+}
+
+#editbutton:link {
+    text-decoration: none;
+}
+
+#editbutton:visited {
+    text-decoration: none;
+}
+
+#editbutton:hover {
+    text-decoration: none;
+    filter: invert(100%)
+}
+
+#editbutton:active {
+    text-decoration: none;
+    invert
+}
+
+#bingo1 {background-image: url(static/texts/text1.png?ts={{ randvar }}), url(static/blobs/blob1.png);}
+#bingo2 {background-image: url(static/texts/text2.png?ts={{ randvar }}), url(static/blobs/blob2.png);}
+#bingo3 {background-image: url(static/texts/text3.png?ts={{ randvar }}), url(static/blobs/blob3.png);}
+#bingo4 {background-image: url(static/texts/text4.png?ts={{ randvar }}), url(static/blobs/blob4.png);}
+#bingo5 {background-image: url(static/texts/text5.png?ts={{ randvar }}), url(static/blobs/blob5.png);}
+#bingo6 {background-image: url(static/texts/text6.png?ts={{ randvar }}), url(static/blobs/blob6.png);}
+#bingo7 {background-image: url(static/texts/text7.png?ts={{ randvar }}), url(static/blobs/blob7.png);}
+#bingo8 {background-image: url(static/texts/text8.png?ts={{ randvar }}), url(static/blobs/blob8.png);}
+#bingo9 {background-image: url(static/texts/text9.png?ts={{ randvar }}), url(static/blobs/blob9.png);}
+#bingo10 {background-image: url(static/texts/text10.png?ts={{ randvar }}), url(static/blobs/blob10.png);}
+#bingo11 {background-image: url(static/texts/text11.png?ts={{ randvar }}), url(static/blobs/blob3.png);}
+#bingo12 {background-image: url(static/texts/text12.png?ts={{ randvar }}), url(static/blobs/blob2.png);}
+#bingo13 {background-image: url(static/texts/text13.png?ts={{ randvar }}), url(static/blobs/blob1.png);}
+#bingo14 {background-image: url(static/texts/text14.png?ts={{ randvar }}), url(static/blobs/blob6.png);}
+#bingo15 {background-image: url(static/texts/text15.png?ts={{ randvar }}), url(static/blobs/blob5.png);}
+#bingo16 {background-image: url(static/texts/text16.png?ts={{ randvar }}), url(static/blobs/blob2.png);}
+#bingo17 {background-image: url(static/texts/text17.png?ts={{ randvar }}), url(static/blobs/blob5.png);}
+#bingo18 {background-image: url(static/texts/text18.png?ts={{ randvar }}), url(static/blobs/blob6.png);}
+#bingo19 {background-image: url(static/texts/text19.png?ts={{ randvar }}), url(static/blobs/blob3.png);}
+#bingo20 {background-image: url(static/texts/text20.png?ts={{ randvar }}), url(static/blobs/blob10.png);}
+#bingo21 {background-image: url(static/texts/text21.png?ts={{ randvar }}), url(static/blobs/blob1.png);}
+#bingo22 {background-image: url(static/texts/text22.png?ts={{ randvar }}), url(static/blobs/blob2.png);}
+#bingo23 {background-image: url(static/texts/text23.png?ts={{ randvar }}), url(static/blobs/blob3.png);}
+#bingo24 {background-image: url(static/texts/text24.png?ts={{ randvar }}), url(static/blobs/blob4.png);}
+#bingo25 {background-image: url(static/texts/text25.png?ts={{ randvar }}), url(static/blobs/blob5.png);}
 </style>
   </head>
   <body>
 
 <div id="container">
   <div id="header">
-    <img src="static/kupobingo.png" />
+    <img src="static/kupobingo.png" alt="It says Kupobingo"/>
   </div>
   <div class="bingobookborder grid-container">
     <div id="bingo1" class="grid-item"></div><div id="bingo2" class="grid-item"></div><div id="bingo3" class="grid-item"></div><div id="bingo4" class="grid-item"></div><div id="bingo5" class="grid-item"></div>
@@ -84,6 +121,7 @@
     <div id="bingo16" class="grid-item"></div><div id="bingo17" class="grid-item"></div><div id="bingo18" class="grid-item"></div><div id="bingo19" class="grid-item"></div><div id="bingo20" class="grid-item"></div>
     <div id="bingo21" class="grid-item"></div><div id="bingo22" class="grid-item"></div><div id="bingo23" class="grid-item"></div><div id="bingo24" class="grid-item"></div><div id="bingo25" class="grid-item"></div>
     </div>
+  <a id="editbutton" href="edit"><img src="static/edit.png"></a>
   </div>
   <script>
 
@@ -106,7 +144,7 @@
     $.each( data, function( key, val ) {
       columnObj = $('#' + key);
       if (val !== null && columnObj.is(':empty')){
-          columnObj.html('<img class="stamp" src="static/' + val + '" />');
+          columnObj.html('<img class="stamp" src="static/stamps/' + val + '" />');
       } else if (val === null && !columnObj.is(':empty')) {
           columnObj.html('');
       }
@@ -117,7 +155,7 @@
 
    };
     $(function() {
-        setInterval(function() {fetchData()}, 750);
+        setInterval(function() {fetchData()}, 500);
     });
   </script>
 </body>
