@@ -18,9 +18,11 @@ bingoboardtemplate = {
 }
 bingoboard = bingoboardtemplate.copy()
 
+@app.route("/clear", methods=['GET'])
 def reset_stamps():
     global bingoboard
     bingoboard = bingoboardtemplate.copy()
+    return "<a href='/'>Stamps cleared</a>"
 
 @app.route("/", methods=['GET'])
 def home():

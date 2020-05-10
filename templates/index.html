@@ -63,27 +63,27 @@ max-width: 604px;
   opacity: 0.4;
 }
 
-#editbutton img{
+.buttons img{
 width: 24px;
 height: 24px;
 }
 
-#editbutton:link {
+.buttons:link {
     text-decoration: none;
 }
 
-#editbutton:visited {
+.buttons:visited {
     text-decoration: none;
 }
 
-#editbutton:hover {
+.buttons:hover {
     text-decoration: none;
     filter: invert(100%)
 }
 
-#editbutton:active {
+.buttons:active {
     text-decoration: none;
-    invert
+    filter: invert(100%)
 }
 
 #bingo1 {background-image: url(static/texts/text1.png?ts={{ randvar }}), url(static/blobs/blob1.png);}
@@ -126,10 +126,23 @@ height: 24px;
     <div id="bingo16" class="grid-item"></div><div id="bingo17" class="grid-item"></div><div id="bingo18" class="grid-item"></div><div id="bingo19" class="grid-item"></div><div id="bingo20" class="grid-item"></div>
     <div id="bingo21" class="grid-item"></div><div id="bingo22" class="grid-item"></div><div id="bingo23" class="grid-item"></div><div id="bingo24" class="grid-item"></div><div id="bingo25" class="grid-item"></div>
     </div>
-  <a id="editbutton" href="edit"><img src="static/edit.png"></a>
+  <a id="editbutton" class="buttons" href="edit"><img src="static/edit.png"></a>
+  <a id="resetbutton" class="buttons" href="clear"><img src="static/reset.png"></a>
   </div>
   <script>
-
+  $("#resetbutton").click(function(e){
+    e.preventDefault();
+    if (confirm("You're about to reset the stamps.\nAre you sure?")) {
+    	$.ajax({
+    	       type: "GET",
+    	       url: "/clear",
+    	       success: function(data)
+    	       {
+    	       console.log(data)
+    	       }
+    	     });
+    }
+  });
   $(".grid-item").click(function(e){
     var columnClicked = $(this).attr('id')
       e.preventDefault(); 
@@ -139,7 +152,7 @@ height: 24px;
              data: "column=" + columnClicked,
              success: function(data)
              {
-             $('#message').html(data)
+             console.log(data)
              }
            });
   });
