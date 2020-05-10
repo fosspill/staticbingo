@@ -9,20 +9,14 @@ import shutil
 
 app = Flask(__name__)
 
-bingoboardtemplate = {
+bingoboard = {
     "bingo1": None,  "bingo2": None,  "bingo3": None,  "bingo4": None,  "bingo5": None,
     "bingo6": None,  "bingo7": None,  "bingo8": None,  "bingo9": None,  "bingo10": None, 
     "bingo11": None, "bingo12": None, "bingo13": None, "bingo14": None, "bingo15": None, 
     "bingo16": None, "bingo17": None, "bingo18": None, "bingo19": None, "bingo20": None, 
     "bingo21": None, "bingo22": None, "bingo23": None, "bingo24": None, "bingo25": None
 }
-bingoboard = bingoboardtemplate.copy()
-
-@app.route("/clear", methods=['GET'])
-def reset_stamps():
-    global bingoboard
-    bingoboard = bingoboardtemplate.copy()
-    return "<a href='/'>Stamps cleared</a>"
+   
 
 @app.route("/", methods=['GET'])
 def home():
@@ -89,8 +83,7 @@ def shuffle():
                 oldfile = "{}{}".format(dirprefix, k)
                 newfile = "{}{}".format(dirprefix, v)
                 shutil.move(oldfile + ".shuf", newfile)
-            reset_stamps()
-            return "Shuffled! Hard-Refresh may be needed because this code is dirtier than your mom. (CTRL+R on the bingoboard)."
+            return "Shuffled! Hard-Refresh may be needed because this code is dirtier than your mom. (CTRL+R on the bingoboard). Remember to unstamp the columns!"
         except:
             return "Something that shouldn't go wrong went wrong!"
     else:
