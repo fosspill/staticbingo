@@ -18,6 +18,13 @@ bingoboardtemplate = {
 }
 bingoboard = bingoboardtemplate.copy()
 
+last_update = int(time.time())
+
+
+def update_last_update():
+    global last_update
+    last_update = int(time.time())
+
 @app.route("/clear", methods=['GET'])
 def reset_stamps():
     global bingoboard
@@ -46,7 +53,7 @@ def stamp():
     
 @app.route("/stamps", methods=['GET'])
 def stamps():
-    return jsonify(bingoboard)
+    return jsonify({"bingoboard": bingoboard, "last_update": last_update})
     
 @app.route("/saveimage", methods=['POST'])
 def savimg():
@@ -62,6 +69,7 @@ def savimg():
             filename = "static/texts/text{}.png".format(column)
             with open(filename, 'wb') as f:
                 f.write(imgdata)
+            update_last_update()
             return "Image Successfully Saved"
         except:
             return "Server Hurts Itself In Confusion"
@@ -90,6 +98,7 @@ def shuffle():
                 newfile = "{}{}".format(dirprefix, v)
                 shutil.move(oldfile + ".shuf", newfile)
             reset_stamps()
+            update_last_update()
             return "Shuffled! Hard-Refresh may be needed because this code is dirtier than your mom. (CTRL+R on the bingoboard)."
         except:
             return "Something that shouldn't go wrong went wrong!"

@@ -130,6 +130,7 @@ height: 24px;
   <a id="resetbutton" class="buttons" href="clear"><img src="static/reset.png"></a>
   </div>
   <script>
+  last_last_update = Date.now()
   $("#resetbutton").click(function(e){
     e.preventDefault();
     if (confirm("You're about to reset the stamps.\nAre you sure?")) {
@@ -159,7 +160,11 @@ height: 24px;
 
   function fetchData() {
   $.getJSON( "/stamps", function( data ) {
-    $.each( data, function( key, val ) {
+  if(data["last_update"] > last_last_update){
+    location.reload();
+  } else {
+  
+    $.each( data["bingoboard"], function( key, val ) {
       columnObj = $('#' + key);
       if (val !== null && columnObj.is(':empty')){
           columnObj.html('<img class="stamp" src="static/stamps/' + val + '" />');
@@ -168,7 +173,8 @@ height: 24px;
       }
 
     });
-
+    last_last_update = data["last_update"];
+    };
   });
 
    };
